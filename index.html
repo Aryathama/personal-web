@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Raditya — A Lifetime Learner</title>
+    <meta name="description"
+        content="A personal learning space — projects, experiments, and progress documented over time." />
+
+    <!-- Google Fonts: JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap"
+        rel="stylesheet" />
+
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- HERO SECTION                                    -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <section id="hero">
+        <canvas id="ascii-canvas"></canvas>
+        <div class="hero-content">
+            <h1 id="hero-title" class="pixel-title"><span class="pixel-letter">R</span><span
+                    class="pixel-letter">a</span><span class="pixel-letter">d</span><span
+                    class="pixel-letter">i</span><span class="pixel-letter">t</span><span
+                    class="pixel-letter">y</span><span class="pixel-letter">a</span></h1>
+            <p class="hero-subtitle"><span id="rotating-subtitle">a lifetime learner</span></p>
+            <p class="hero-description">
+                This website is my learning space — where I share projects, experiments,
+                and progress as I go. I'm simply building and documenting what I learn
+                over time.
+            </p>
+            <a href="#how-i-build" class="scroll-cue" aria-label="Scroll down">
+                <span class="scroll-cue-arrow">↓</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- HOW I BUILD                                     -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <section id="how-i-build">
+        <div class="section-inner">
+            <h2 class="section-heading">How I Build</h2>
+            <p class="section-intro">
+                I divide my learning journey into three main tracks:
+            </p>
+
+            <!-- Track 1 ─────────────────────────────────── -->
+            <div class="track">
+                <h3 class="track-title">Weekday Projects — Data Analysis</h3>
+                <p class="track-description">
+                    A more structured and business-oriented approach. Here, I explore how
+                    human decisions and business processes are reflected in data.
+                </p>
+
+                <div class="card-carousel">
+                    <div class="carousel-viewport">
+                        <div class="carousel-track">
+
+                            <div class="project-card">
+                                <h4 class="project-name">Customer Churn Prediction</h4>
+                                <div class="project-meta">
+                                    <div class="meta-row">
+                                        <span class="meta-label">What I explored</span>
+                                        <p>Predicting customer attrition patterns using historical transaction data and
+                                            behavioral signals.</p>
+                                    </div>
+                                    <div class="meta-row">
+                                        <span class="meta-label">Why I was curious</span>
+                                        <p>Can we quantify the early warning signs before a customer churns?</p>
+                                    </div>
+                                    <div class="meta-row">
+                                        <span class="meta-label">Tools / Methods</span>
+                                        <p>Python, Pandas, Scikit-learn, Decision Trees, Logistic Regression</p>
+                                    </div>
+                                </div>
+                                <div class="project-links">
+                                    <a href="#" class="project-link">Read the breakdown →</a>
+                                    <a href="#" class="project-link">View the code →</a>
+                                </div>
+                            </div>
+
+                            <div class="project-card">
+                                <h4 class="project-name">Sales Funnel Analysis</h4>
+                                <div class="project-meta">
+                                    <div class="meta-row">
+                                        <span class="meta-label">What I explored</span>
+                                        <p>Mapping the drop-off points across a B2B sales pipeline to find conversion
+                                            bottlenecks.</p>
+                                    </div>
+                                    <div class="meta-row">
+                                        <span class="meta-label">Why I was curious</span>
+                                        <p>Where exactly do potential customers lose interest, and can we measure it?
+                                        </p>
+                                    </div>
+                                    <div class="meta-row">
+                                        <span class="meta-label">Tools / Methods</span>
+                                        <p>Python, Pandas, Matplotlib, Funnel Charts, SQL</p>
+                                    </div>
+                                </div>
+                                <div class="project-links">
+                                    <a href="#" class="project-link">Read the breakdown →</a>
+                                    <a href="#" class="project-link">View the code →</a>
+                                </div>
+                            </div>
+
+                            <div class="project-card">
+                                <h4 class="project-name">Employee Attrition Dashboard</h4>
+                                <div class="project-meta">
+                                    <div class="meta-row">
+                                        <span class="meta-label">What I explored</span>
+                                        <p>Building an interactive dashboard to visualize key drivers behind employee
+                                            turnover.</p>
+                                    </div>
+                                    <div class="meta-row">
+                                        <span class="meta-label">Why I was curious</span>
+                                        <p>Can HR data tell us which factors matter most for retention?</p>
+                                    </div>
+                                    <div class="meta-row">
+                                        <span class="meta-label">Tools / Methods</span>
+                                        <p>Python, Plotly Dash, Pandas, Random Forest, Feature Importance</p>
+                                    </div>
+                                </div>
+                                <div class="project-links">
+                                    <a href="#" class="project-link">Read the breakdown →</a>
+                                    <a href="#" class="project-link">View the code →</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="carousel-nav">
+                        <button class="carousel-btn carousel-prev" aria-label="Previous project">←</button>
+                        <span class="carousel-counter">1 / 3</span>
+                        <button class="carousel-btn carousel-next" aria-label="Next project">→</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Track 2 ─────────────────────────────────── -->
+            <div class="track">
+                <h3 class="track-title">Weekend Projects — Creative Machine Learning</h3>
+                <p class="track-description">
+                    A curiosity-driven exploration space. These projects often start from
+                    simple technical questions or playful experiments that evolve into
+                    deeper investigations.
+                </p>
+
+                <div class="card-carousel">
+                    <div class="carousel-viewport">
+                        <div class="carousel-track">
+
+                            <div class="project-card">
+                                <h4 class="project-name">Neural Style Transfer Playground</h4>
+                                <div class="project-meta">
+                                    <div class="meta-row">
+                                        <span class="meta-label">What I explored</span>
+                                        <p>Applying artistic styles to photographs using convolutional neural networks.
+                                        </p>
+                                    </div>
+                                    <div class="meta-row">
+                                        <span class="meta-label">Why I was curious</span>
+                                        <p>What happens when you teach a machine to "see" art the way humans do?</p>
+                                    </div>
+                                    <div class="meta-row">
+                                        <span class="meta-label">Tools / Methods</span>
+                                        <p>Python, PyTorch, VGG19, Transfer Learning, Image Processing</p>
+                                    </div>
+                                </div>
+                                <div class="project-links">
+                                    <a href="#" class="project-link">Read the breakdown →</a>
+                                    <a href="#" class="project-link">View the code →</a>
+                                </div>
+                            </div>
+
+                            <div class="project-card">
+                                <h4 class="project-name">Handwriting Generator</h4>
+                                <div class="project-meta">
+                                    <div class="meta-row">
+                                        <span class="meta-label">What I explored</span>
+                                        <p>Training a recurrent neural network to generate realistic handwriting from
+                                            text input.</p>
+                                    </div>
+                                    <div class="meta-row">
+                                        <span class="meta-label">Why I was curious</span>
+                                        <p>Can a model learn the subtle imperfections that make handwriting look human?
+                                        </p>
+                                    </div>
+                                    <div class="meta-row">
+                                        <span class="meta-label">Tools / Methods</span>
+                                        <p>Python, TensorFlow, LSTM, Sequence-to-Sequence, IAM Dataset</p>
+                                    </div>
+                                </div>
+                                <div class="project-links">
+                                    <a href="#" class="project-link">Read the breakdown →</a>
+                                    <a href="#" class="project-link">View the code →</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="carousel-nav">
+                        <button class="carousel-btn carousel-prev" aria-label="Previous project">←</button>
+                        <span class="carousel-counter">1 / 2</span>
+                        <button class="carousel-btn carousel-next" aria-label="Next project">→</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Track 3 ─────────────────────────────────── -->
+            <div class="track">
+                <h3 class="track-title">Academic &amp; Explorations</h3>
+                <p class="track-description">
+                    Projects that don't fit into my weekday or weekend structure.
+                    Sometimes academic, sometimes experimental — still part of the journey.
+                </p>
+
+                <div class="card-carousel">
+                    <div class="carousel-viewport">
+                        <div class="carousel-track">
+
+                            <div class="project-card">
+                                <h4 class="project-name">Graph-Based Social Network Analysis</h4>
+                                <div class="project-meta">
+                                    <div class="meta-row">
+                                        <span class="meta-label">What I explored</span>
+                                        <p>Mapping influence and community structures within social network datasets
+                                            using graph theory.</p>
+                                    </div>
+                                    <div class="meta-row">
+                                        <span class="meta-label">Why I was curious</span>
+                                        <p>How do information and influence actually flow through online communities?
+                                        </p>
+                                    </div>
+                                    <div class="meta-row">
+                                        <span class="meta-label">Tools / Methods</span>
+                                        <p>Python, NetworkX, Pandas, Centrality Metrics, Community Detection</p>
+                                    </div>
+                                </div>
+                                <div class="project-links">
+                                    <a href="#" class="project-link">Read the breakdown →</a>
+                                    <a href="#" class="project-link">View the code →</a>
+                                </div>
+                            </div>
+
+                            <div class="project-card">
+                                <h4 class="project-name">Cellular Automata Visualizer</h4>
+                                <div class="project-meta">
+                                    <div class="meta-row">
+                                        <span class="meta-label">What I explored</span>
+                                        <p>Simulating emergent complexity from simple cellular automata rules rendered
+                                            in real-time on Canvas.</p>
+                                    </div>
+                                    <div class="meta-row">
+                                        <span class="meta-label">Why I was curious</span>
+                                        <p>How can incredibly simple rules produce such complex, life-like patterns?</p>
+                                    </div>
+                                    <div class="meta-row">
+                                        <span class="meta-label">Tools / Methods</span>
+                                        <p>JavaScript, HTML5 Canvas, Conway's Game of Life, Rule 110</p>
+                                    </div>
+                                </div>
+                                <div class="project-links">
+                                    <a href="#" class="project-link">Read the breakdown →</a>
+                                    <a href="#" class="project-link">View the code →</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="carousel-nav">
+                        <button class="carousel-btn carousel-prev" aria-label="Previous project">←</button>
+                        <span class="carousel-counter">1 / 2</span>
+                        <button class="carousel-btn carousel-next" aria-label="Next project">→</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- CURRENTLY LEARNING                              -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <section id="currently-learning">
+        <div class="section-inner">
+            <h2 class="section-heading">Currently Learning</h2>
+            <div class="learning-block">
+                <p class="learning-text">
+                    Right now, I'm working on:
+                </p>
+                <p class="learning-focus">
+                    Building a neural network from scratch — understanding backpropagation, gradient descent, and matrix
+                    math without any ML frameworks.
+                </p>
+                <p class="learning-note">
+                    This section updates as the project evolves.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- REACH ME                                        -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <footer id="reach-me">
+        <div class="section-inner">
+            <h2 class="section-heading">Reach Me</h2>
+            <p class="reach-description">
+                If anything here resonates with you, feel free to reach out.
+                I'm open to exchanging ideas and conversations.
+            </p>
+            <div class="reach-links">
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="reach-link">LinkedIn</a>
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="reach-link">GitHub</a>
+                <a href="mailto:hello@example.com" class="reach-link">Email</a>
+            </div>
+            <p class="footer-copy">© 2026 Raditya</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

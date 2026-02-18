@@ -1,0 +1,511 @@
+/* ═══════════════════════════════════════════════════════
+   FONT FACES — Geist Pixel variants
+   ═══════════════════════════════════════════════════════ */
+
+@font-face {
+    font-family: 'GeistPixel-Square';
+    src: url('fonts/GeistPixel-Square.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GeistPixel-Circle';
+    src: url('fonts/GeistPixel-Circle.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GeistPixel-Grid';
+    src: url('fonts/GeistPixel-Grid.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GeistPixel-Line';
+    src: url('fonts/GeistPixel-Line.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GeistPixel-Triangle';
+    src: url('fonts/GeistPixel-Triangle.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+/* ═══════════════════════════════════════════════════════
+   RESET & BASE
+   ═══════════════════════════════════════════════════════ */
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background-color: #ffffff;
+    overflow-x: hidden;
+}
+
+::selection {
+    background: #1a1a1a;
+    color: #ffffff;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+/* ═══════════════════════════════════════════════════════
+   HERO SECTION
+   ═══════════════════════════════════════════════════════ */
+
+#hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #fafafa;
+}
+
+#ascii-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: auto;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 680px;
+    padding: 0 24px;
+    pointer-events: none;
+}
+
+.hero-content>* {
+    pointer-events: auto;
+}
+
+/* Title — Geist Pixel Square */
+.pixel-title {
+    font-family: 'GeistPixel-Square', monospace;
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: normal;
+    letter-spacing: 0.02em;
+    color: #1a1a1a;
+    margin-bottom: 12px;
+    cursor: default;
+}
+
+.pixel-letter {
+    display: inline-block;
+    will-change: font-family;
+    transition: none;
+}
+
+/* Glitch font-family variants — toggled by JS per letter */
+.pixel-letter.glitch-circle {
+    font-family: 'GeistPixel-Circle', monospace;
+}
+
+.pixel-letter.glitch-grid {
+    font-family: 'GeistPixel-Grid', monospace;
+}
+
+.pixel-letter.glitch-line {
+    font-family: 'GeistPixel-Line', monospace;
+}
+
+.pixel-letter.glitch-triangle {
+    font-family: 'GeistPixel-Triangle', monospace;
+}
+
+.hero-subtitle {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #666;
+    letter-spacing: 0.08em;
+    text-transform: lowercase;
+    margin-bottom: 24px;
+}
+
+.hero-description {
+    font-size: 0.85rem;
+    color: #888;
+    line-height: 1.8;
+    max-width: 480px;
+    margin: 0 auto 48px;
+}
+
+/* Scroll cue arrow */
+.scroll-cue {
+    display: inline-block;
+    color: #bbb;
+    font-size: 1.2rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+    animation: float 2.5s ease-in-out infinite;
+}
+
+.scroll-cue:hover {
+    color: #1a1a1a;
+    transform: translateY(4px);
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(8px);
+    }
+}
+
+
+/* ═══════════════════════════════════════════════════════
+   SHARED SECTION STYLES
+   ═══════════════════════════════════════════════════════ */
+
+.section-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 120px 24px;
+}
+
+.section-heading {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #1a1a1a;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.section-intro {
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 56px;
+    line-height: 1.8;
+}
+
+
+/* ═══════════════════════════════════════════════════════
+   HOW I BUILD — TRACKS + PROJECT CARDS
+   ═══════════════════════════════════════════════════════ */
+
+#how-i-build {
+    background: #ffffff;
+}
+
+.track {
+    margin-bottom: 64px;
+}
+
+.track:last-child {
+    margin-bottom: 0;
+}
+
+.track-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 8px;
+}
+
+.track-description {
+    font-size: 0.82rem;
+    color: #888;
+    line-height: 1.8;
+    margin-bottom: 28px;
+}
+
+/* Project card carousel */
+.card-carousel {
+    position: relative;
+}
+
+.carousel-viewport {
+    overflow: hidden;
+    padding: 1px;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+}
+
+.carousel-track .project-card {
+    min-width: 100%;
+    width: 100%;
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+
+/* Project card */
+.project-card {
+    border: 1px solid #e5e5e5;
+    padding: 28px 28px 20px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    border-color: #ccc;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.04);
+}
+
+.project-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+}
+
+.project-meta {
+    margin-bottom: 20px;
+}
+
+.meta-row {
+    margin-bottom: 14px;
+}
+
+.meta-row:last-child {
+    margin-bottom: 0;
+}
+
+.meta-label {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #aaa;
+    margin-bottom: 4px;
+}
+
+.meta-row p {
+    font-size: 0.82rem;
+    color: #555;
+    line-height: 1.7;
+}
+
+.project-links {
+    display: flex;
+    gap: 24px;
+    padding-top: 16px;
+    border-top: 1px solid #f0f0f0;
+}
+
+.project-link {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #888;
+    letter-spacing: 0.02em;
+    transition: color 0.25s ease;
+}
+
+.project-link:hover {
+    color: #1a1a1a;
+}
+
+/* Carousel navigation */
+.carousel-nav {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.carousel-btn {
+    background: none;
+    border: 1px solid #e5e5e5;
+    color: #888;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+.carousel-btn:hover {
+    color: #1a1a1a;
+    border-color: #1a1a1a;
+}
+
+.carousel-btn:disabled {
+    color: #ddd;
+    border-color: #f0f0f0;
+    cursor: default;
+}
+
+.carousel-counter {
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: #aaa;
+    letter-spacing: 0.08em;
+}
+
+
+/* ═══════════════════════════════════════════════════════
+   CURRENTLY LEARNING
+   ═══════════════════════════════════════════════════════ */
+
+#currently-learning {
+    background: #fafafa;
+}
+
+.learning-block {
+    max-width: 560px;
+}
+
+.learning-text {
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 16px;
+}
+
+.learning-focus {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #1a1a1a;
+    line-height: 1.8;
+    padding-left: 16px;
+    border-left: 2px solid #1a1a1a;
+    margin-bottom: 24px;
+}
+
+.learning-note {
+    font-size: 0.75rem;
+    color: #bbb;
+    font-style: italic;
+}
+
+
+/* ═══════════════════════════════════════════════════════
+   REACH ME — FOOTER
+   ═══════════════════════════════════════════════════════ */
+
+#reach-me {
+    background: #ffffff;
+}
+
+#reach-me .section-inner {
+    padding-bottom: 60px;
+}
+
+.reach-description {
+    font-size: 0.85rem;
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 32px;
+    max-width: 480px;
+}
+
+.reach-links {
+    display: flex;
+    gap: 32px;
+    margin-bottom: 56px;
+}
+
+.reach-link {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #888;
+    letter-spacing: 0.04em;
+    padding-bottom: 2px;
+    border-bottom: 1px solid transparent;
+    transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+.reach-link:hover {
+    color: #1a1a1a;
+    border-bottom-color: #1a1a1a;
+}
+
+.footer-copy {
+    font-size: 0.7rem;
+    color: #ccc;
+    letter-spacing: 0.05em;
+}
+
+
+/* ═══════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+    .section-inner {
+        padding: 80px 20px;
+    }
+
+    .project-card {
+        padding: 20px;
+    }
+
+    .project-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .reach-links {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .hero-description {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .pixel-title {
+        font-size: 2.4rem;
+    }
+
+    .section-inner {
+        padding: 60px 16px;
+    }
+}
