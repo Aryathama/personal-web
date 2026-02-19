@@ -286,6 +286,8 @@ a {
     border: 1px solid #e5e5e5;
     padding: 28px 28px 20px;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
 }
 
 .project-card:hover {
@@ -302,6 +304,7 @@ a {
 
 .project-meta {
     margin-bottom: 20px;
+    flex: 1;
 }
 
 .meta-row {
