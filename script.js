@@ -214,41 +214,44 @@
    TITLE GLITCH — per-letter Geist Pixel variant cycling
    ═══════════════════════════════════════════════════════ */
 (() => {
-  const letters = document.querySelectorAll('.pixel-letter');
-  if (!letters.length) return;
+  // Wait for all Geist Pixel fonts to load before enabling glitch
+  document.fonts.ready.then(() => {
+    const letters = document.querySelectorAll('.pixel-letter');
+    if (!letters.length) return;
 
-  const variants = [
-    'glitch-circle',
-    'glitch-grid',
-    'glitch-line',
-    'glitch-triangle',
-  ];
-  const CYCLE_MS = 70;
-  const TOTAL_DURATION = 420;
+    // Fixed sequence: line → triangle → grid → circle → (remove = back to square)
+    const sequence = [
+      'glitch-line',
+      'glitch-triangle',
+      'glitch-grid',
+      'glitch-circle',
+    ];
+    const CYCLE_MS = 70;
 
-  function glitchLetter(letter) {
-    if (letter.dataset.glitching === 'true') return;
-    letter.dataset.glitching = 'true';
+    function glitchLetter(letter) {
+      if (letter.dataset.glitching === 'true') return;
+      letter.dataset.glitching = 'true';
 
-    let step = 0;
-    const maxSteps = Math.floor(TOTAL_DURATION / CYCLE_MS);
+      let step = 0;
 
-    const timer = setInterval(() => {
-      variants.forEach(v => letter.classList.remove(v));
+      const timer = setInterval(() => {
+        // Remove all variant classes
+        sequence.forEach(v => letter.classList.remove(v));
 
-      if (step < maxSteps) {
-        const pick = variants[Math.floor(Math.random() * variants.length)];
-        letter.classList.add(pick);
-      } else {
-        clearInterval(timer);
-        letter.dataset.glitching = 'false';
-      }
-      step++;
-    }, CYCLE_MS);
-  }
+        if (step < sequence.length) {
+          letter.classList.add(sequence[step]);
+        } else {
+          // Back to square (no class = default font-family)
+          clearInterval(timer);
+          letter.dataset.glitching = 'false';
+        }
+        step++;
+      }, CYCLE_MS);
+    }
 
-  letters.forEach(letter => {
-    letter.addEventListener('mouseenter', () => glitchLetter(letter));
+    letters.forEach(letter => {
+      letter.addEventListener('mouseenter', () => glitchLetter(letter));
+    });
   });
 })();
 
