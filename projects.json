@@ -29,20 +29,20 @@
       "description": "A curiosity-driven exploration space. These projects often start from simple technical questions or playful experiments that evolve into deeper investigations.",
       "projects": [
         {
-          "name": "Q-Learning Maze Experiment",
-          "explored": "Training an AI agent to navigate a maze using reinforcement learning.",
-          "curiosity": "Can an AI agent learn to solve problems through trial and error without being explicitly programmed for every step?",
-          "tools": "Python, Q-Learning (Reinforcement Learning), Data Visualization",
-          "breakdownUrl": "https://medium.com/@radityaagung/visualizing-trial-and-error-a-maze-learning-experiment-3967ce9b4713",
-          "codeUrl": "https://github.com/Aryathama/q-learning"
-        },
-        {
           "name": "The Anatomy of Attention",
           "explored": "Manually dissecting the math behind BERT's Multi-Head Attention to understand how it calculates context, and building a minimalist UI to map it out.",
           "curiosity": "How does a machine actually know which words matter in a sentence?",
           "tools": "Python, PyTorch, FastAPI, Vanilla JS, SVG",
           "breakdownUrl": "https://medium.com/@radityaagung/the-anatomy-of-attention-finding-meaning-in-a-sea-of-144-detectives-75f64e4c750d",
           "codeUrl": "#"
+        },
+        {
+          "name": "Q-Learning Maze Experiment",
+          "explored": "Training an AI agent to navigate a maze using reinforcement learning.",
+          "curiosity": "Can an AI agent learn to solve problems through trial and error without being explicitly programmed for every step?",
+          "tools": "Python, Q-Learning (Reinforcement Learning), Data Visualization",
+          "breakdownUrl": "https://medium.com/@radityaagung/visualizing-trial-and-error-a-maze-learning-experiment-3967ce9b4713",
+          "codeUrl": "https://github.com/Aryathama/q-learning"
         }
       ]
     },
