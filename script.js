@@ -122,6 +122,15 @@
   canvas.addEventListener('mousemove', onMouseMove);
   canvas.addEventListener('mouseleave', onMouseLeave);
 
+  // ── Touch support (mobile) ───────────────────────────
+  canvas.addEventListener('touchmove', (e) => {
+    if (e.touches.length > 0) {
+      e.preventDefault();
+      onMouseMove(e.touches[0]);
+    }
+  }, { passive: false });
+  canvas.addEventListener('touchend', onMouseLeave);
+
   // ── Animation loop ─────────────────────────────────
   let lastFrame = 0;
   const FRAME_INTERVAL = 1000 / 20; // throttle scramble updates to ~20fps for the slot-machine feel
@@ -251,6 +260,10 @@
 
     letters.forEach(letter => {
       letter.addEventListener('mouseenter', () => glitchLetter(letter));
+      letter.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        glitchLetter(letter);
+      }, { passive: false });
     });
   });
 })();
@@ -289,38 +302,105 @@
 
 
 /* ═══════════════════════════════════════════════════════
-   PROJECT CARD CAROUSELS — prev/next navigation
+   PROJECT CARDS — fetch from projects.json & render
    ═══════════════════════════════════════════════════════ */
 (() => {
-  const carousels = document.querySelectorAll('.card-carousel');
+  const container = document.getElementById('tracks-container');
+  if (!container) return;
 
-  carousels.forEach(carousel => {
-    const track = carousel.querySelector('.carousel-track');
-    const cards = track.querySelectorAll('.project-card');
-    const prevBtn = carousel.querySelector('.carousel-prev');
-    const nextBtn = carousel.querySelector('.carousel-next');
-    const counter = carousel.querySelector('.carousel-counter');
-    const total = cards.length;
-    let current = 0;
+  // ── Helper: escape HTML entities ─────────────────────
+  function esc(str) {
+    const d = document.createElement('div');
+    d.textContent = str;
+    return d.innerHTML;
+  }
 
-    function update() {
-      track.style.transform = `translateX(-${current * 100}%)`;
-      counter.textContent = `${current + 1} / ${total}`;
-      prevBtn.disabled = current === 0;
-      nextBtn.disabled = current === total - 1;
-    }
+  // ── Build HTML for one project card ──────────────────
+  function cardHTML(p) {
+    return `
+      <div class="project-card">
+        <h4 class="project-name">${esc(p.name)}</h4>
+        <div class="project-meta">
+          <div class="meta-row">
+            <span class="meta-label">What I explored</span>
+            <p>${esc(p.explored)}</p>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label">Why I was curious</span>
+            <p>${esc(p.curiosity)}</p>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label">Tools / Methods</span>
+            <p>${esc(p.tools)}</p>
+          </div>
+        </div>
+        <div class="project-links">
+          <a href="${esc(p.breakdownUrl)}" class="project-link">Read the breakdown →</a>
+          <a href="${esc(p.codeUrl)}" class="project-link">View the code →</a>
+        </div>
+      </div>`;
+  }
 
-    prevBtn.addEventListener('click', () => {
-      if (current > 0) { current--; update(); }
+  // ── Build HTML for one track ─────────────────────────
+  function trackHTML(t) {
+    const cards = t.projects.map(cardHTML).join('');
+    return `
+      <div class="track">
+        <h3 class="track-title">${esc(t.title)}</h3>
+        <p class="track-description">${esc(t.description)}</p>
+        <div class="card-carousel">
+          <div class="carousel-viewport">
+            <div class="carousel-track">${cards}</div>
+          </div>
+          <div class="carousel-nav">
+            <button class="carousel-btn carousel-prev" aria-label="Previous project">←</button>
+            <span class="carousel-counter">1 / ${t.projects.length}</span>
+            <button class="carousel-btn carousel-next" aria-label="Next project">→</button>
+          </div>
+        </div>
+      </div>`;
+  }
+
+  // ── Init carousels (prev/next navigation) ────────────
+  function initCarousels() {
+    const carousels = document.querySelectorAll('.card-carousel');
+    carousels.forEach(carousel => {
+      const track = carousel.querySelector('.carousel-track');
+      const cards = track.querySelectorAll('.project-card');
+      const prevBtn = carousel.querySelector('.carousel-prev');
+      const nextBtn = carousel.querySelector('.carousel-next');
+      const counter = carousel.querySelector('.carousel-counter');
+      const total = cards.length;
+      let current = 0;
+
+      function update() {
+        track.style.transform = `translateX(-${current * 100}%)`;
+        counter.textContent = `${current + 1} / ${total}`;
+        prevBtn.disabled = current === 0;
+        nextBtn.disabled = current === total - 1;
+      }
+
+      prevBtn.addEventListener('click', () => {
+        if (current > 0) { current--; update(); }
+      });
+      nextBtn.addEventListener('click', () => {
+        if (current < total - 1) { current++; update(); }
+      });
+      update();
     });
+  }
 
-    nextBtn.addEventListener('click', () => {
-      if (current < total - 1) { current++; update(); }
+  // ── Fetch data & render ──────────────────────────────
+  fetch('projects.json')
+    .then(r => r.json())
+    .then(data => {
+      container.innerHTML = data.tracks.map(trackHTML).join('');
+      initCarousels();
+    })
+    .catch(err => {
+      console.error('Failed to load projects:', err);
+      container.innerHTML = '<p style="color:#888">Could not load projects.</p>';
     });
-
-    // initialise button states
-    update();
-  });
 })();
 
 
