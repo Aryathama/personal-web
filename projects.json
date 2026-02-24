@@ -10,7 +10,7 @@
           "explored": "Translating machine learning probabilities into Net Protected Value, proving how a transparent linear model can outperform complex algorithms in protecting actual business capital.",
           "curiosity": "How do we accurately identify high-risk borrowers before the funds ever leave the bank?",
           "tools": "Python, Logistic Regression, XGBoost, GridSearchCV, Cost-Benefit Analysis",
-          "breakdownUrl": "#",
+          "breakdownUrl": "https://medium.com/@radityaagung/its-not-always-about-how-good-your-machine-learning-model-is-0884c9e14cf5",
           "codeUrl": "https://github.com/Aryathama/credit-risk-analysis"
         },
         {
