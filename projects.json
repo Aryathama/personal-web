@@ -6,6 +6,14 @@
       "description": "A more structured and business-oriented approach. Here, I explore how human decisions and business processes are reflected in data.",
       "projects": [
         {
+          "name": "Household Electricity Forecasting",
+          "explored": "Decoding the human habits behind energy consumption by proving how a context-aware manual SARIMA model can outperform an automated algorithm.",
+          "curiosity": "How do you actually build a time-series forecasting model using a real-world dataset?",
+          "tools": "Python, SARIMA, Auto-ARIMA, ACF/PACF Analysis, Rolling Averages",
+          "breakdownUrl": "https://medium.com/@radityaagung/learning-time-series-notes-on-forecasting-household-electricity-3b8c875271a2",
+          "codeUrl": ""
+        },
+        {
           "name": "Credit Default Risk Prediction",
           "explored": "Translating machine learning probabilities into Net Protected Value, proving how a transparent linear model can outperform complex algorithms in protecting actual business capital.",
           "curiosity": "How do we accurately identify high-risk borrowers before the funds ever leave the bank?",
