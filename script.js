@@ -10,7 +10,7 @@
   const SYMBOLS = '@#%^&*[]{}~<>|/\\+-=.:;!?$'.split('');
   const CELL_SIZE = 22;          // px per grid cell
   const FONT_SIZE = 14;          // px
-  const BASE_COLOR = '#e0e0e0';  // resting symbol colour
+  const BASE_COLOR = '#F0F0F0';  // resting symbol colour
   const HOVER_COLOR = '#888888'; // darkened during scramble
   const SCRAMBLE_FRAMES = 6;     // how many random flips before settling
   const SETTLE_DURATION = 400;   // ms to fade colour back to base
