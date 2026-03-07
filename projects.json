@@ -11,7 +11,7 @@
           "curiosity": "How do you actually build a time-series forecasting model using a real-world dataset?",
           "tools": "Python, SARIMA, Auto-ARIMA, ACF/PACF Analysis, Rolling Averages",
           "breakdownUrl": "https://medium.com/@radityaagung/learning-time-series-notes-on-forecasting-household-electricity-3b8c875271a2",
-          "codeUrl": ""
+          "codeUrl": "https://github.com/Aryathama/household-consumption"
         },
         {
           "name": "Credit Default Risk Prediction",
