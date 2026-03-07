@@ -15,6 +15,16 @@
   const SCRAMBLE_FRAMES = 6;     // how many random flips before settling
   const SETTLE_DURATION = 400;   // ms to fade colour back to base
 
+  // ── Mobile detection ─────────────────────────────────
+  const isTouchPrimary = window.matchMedia('(hover: none)').matches;
+
+  // ── Falling characters config (mobile) ─────────────────
+  const ACTIVE_COLUMNS = 5;      // max simultaneous falling columns
+  const TRAIL_LENGTH = 4;        // how many cells trail behind the head
+  const FALL_MIN = 80;           // fastest drop interval (ms)
+  const FALL_MAX = 220;          // slowest drop interval (ms)
+  let drops = [];                // { col, row, interval, lastTick } active falling drops
+
   let cols = 0, rows = 0;
   let grid = [];        // [row][col] = { symbol, origSymbol, color, state, … }
   let dirtySet = new Set(); // indices of cells that need redraw
@@ -122,14 +132,16 @@
   canvas.addEventListener('mousemove', onMouseMove);
   canvas.addEventListener('mouseleave', onMouseLeave);
 
-  // ── Touch support (mobile) ───────────────────────────
-  canvas.addEventListener('touchmove', (e) => {
-    if (e.touches.length > 0) {
-      e.preventDefault();
-      onMouseMove(e.touches[0]);
-    }
-  }, { passive: false });
-  canvas.addEventListener('touchend', onMouseLeave);
+  // ── Touch support (desktop-only, disabled on mobile) ──
+  if (!isTouchPrimary) {
+    canvas.addEventListener('touchmove', (e) => {
+      if (e.touches.length > 0) {
+        e.preventDefault();
+        onMouseMove(e.touches[0]);
+      }
+    }, { passive: false });
+    canvas.addEventListener('touchend', onMouseLeave);
+  }
 
   // ── Animation loop ─────────────────────────────────
   let lastFrame = 0;
@@ -141,6 +153,44 @@
     const deltaFrame = now - lastFrame;
     const doScrambleTick = deltaFrame >= FRAME_INTERVAL;
     if (doScrambleTick) lastFrame = now;
+
+    // ── Falling characters on mobile ─────────────────────
+    if (isTouchPrimary && cols > 0 && rows > 0) {
+
+      // Spawn new drops if below max
+      while (drops.length < ACTIVE_COLUMNS) {
+        drops.push({
+          col: Math.floor(Math.random() * cols),
+          row: -Math.floor(Math.random() * 8) - 1,  // staggered start
+          interval: FALL_MIN + Math.random() * (FALL_MAX - FALL_MIN),
+          lastTick: now,
+        });
+      }
+
+      // Advance each drop on its own timer
+      for (let i = drops.length - 1; i >= 0; i--) {
+        const drop = drops[i];
+        if (now - drop.lastTick < drop.interval) continue;
+        drop.lastTick = now;
+        drop.row++;
+
+        // Scramble the head cell
+        if (drop.row >= 0 && drop.row < rows) {
+          const cell = grid[drop.row][drop.col];
+          if (cell.state === 'idle') {
+            cell.state = 'scramble';
+            cell.origSymbol = cell.symbol;
+            cell.framesLeft = SCRAMBLE_FRAMES + 2;
+            dirtySet.add(key(drop.row, drop.col));
+          }
+        }
+
+        // Remove drop when it exits the grid
+        if (drop.row - TRAIL_LENGTH >= rows) {
+          drops.splice(i, 1);
+        }
+      }
+    }
 
     // Process dirty cells
     const toRemove = [];

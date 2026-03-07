@@ -501,6 +501,11 @@ a {
     .hero-description {
         font-size: 0.8rem;
     }
+
+    .scroll-cue {
+        font-size: 1.6rem;
+        color: #888;
+    }
 }
 
 @media (max-width: 480px) {
